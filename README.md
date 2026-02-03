@@ -23,5 +23,5 @@ curl -fsSL https://cdn.jsdmirror.com/gh/deepmodeling-activity/abacus1s/abacus1s.
 The installation script has several options that can be manipulated through environment variables.
 
 - `ABACUS1S_HOME`: The location of the binary folder. (default: `$HOME/.abacus1s`)
-- `ABACUS1S_NO_PATH_UPDATE`: If set the `$PATH` will not be updated to add pixi to it.
+- `ABACUS1S_NO_PATH_UPDATE`: If set the `$PATH` will not be updated to add ABACUS to it.
 - `ABACUS_VERSION`: The version of ABACUS getting installed, can be used to up- or down-grade.
