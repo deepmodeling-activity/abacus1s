@@ -16,8 +16,9 @@ cat <<"EOF"
 EOF
 
 progress=0
+total_progress=5
 logging() {
-  echo -e "\033[32mABACUS1s [$progress/4] $1\033[0m"
+  echo -e "\033[32mABACUS1s [${progress}/${total_progress}] $1\033[0m"
 }
 logging "This script will automatically download and install ABACUS (${ABACUS_VERSION:-"lastest version"}) for you."
 
