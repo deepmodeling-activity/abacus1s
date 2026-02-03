@@ -61,5 +61,10 @@ logging "Check the installation"
 $ABACUS1S_BIN_PATH/abacus --version
 $ABACUS1S_BIN_PATH/mpirun --version
 
+# 5. Remove pixi
+((progress++))
+logging "Remove pixi to prevent conflict"
+rm -f $ABACUS1S_BIN_PATH/pixi
+
 logging "ABACUS have been installed to ${ABACUS1S_BIN_PATH}. Restart the shell to use abacus and mpirun."
 
