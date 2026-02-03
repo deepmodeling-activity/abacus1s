@@ -15,7 +15,7 @@
 Just copy and paste in 1s, and let it run.
 
 ```sh
-curl -fsSL https://cdn.jsdmirror.com/gh/deepmodeling-activity/abacus1s/abacus1s.sh | bash
+curl -fsSL https://abacus1s.jinzhezeng.group | bash
 ```
 
 ## Options
