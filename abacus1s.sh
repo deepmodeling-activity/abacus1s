@@ -29,15 +29,27 @@ ABACUS1S_BIN_PATH=$ABACUS1S_HOME/bin
 # 1. check the location of the machine
 ((progress++)) || :
 
-country=$(curl -s https://ipinfo.io/country)
-logging "Location: ${country}"
-if [ "$country" = "CN" ]
-then
-  conda_channel="https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge/"
-  export PIXI_REPOURL=https://ghfast.top/https://github.com/prefix-dev/pixi
+if [[ -v ABACUS1S_COUNTRY ]]; then
+  country=${ABACUS1S_COUNTRY}
 else
-  conda_channel="conda-forge"
+  country=$(curl -fsSL --connect-timeout 5 --max-time 10 https://ipinfo.io/country || :)
 fi
+
+case "${country}" in
+  CN)
+    logging "Location: ${country}"
+    conda_channel="https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge/"
+    export PIXI_REPOURL=https://ghfast.top/https://github.com/prefix-dev/pixi
+    ;;
+  "")
+    logging "Location detection failed; falling back to conda-forge"
+    conda_channel="conda-forge"
+    ;;
+  *)
+    logging "Location: ${country}"
+    conda_channel="conda-forge"
+    ;;
+esac
 
 # 2. install pixi
 ((progress++))
